@@ -1,0 +1,15 @@
+{
+  "name": "books-db",
+  "version": "1.0.0",
+  "description": "books-db",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim-Gabrikowski",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  }
+}
