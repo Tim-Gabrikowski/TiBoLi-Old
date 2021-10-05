@@ -16,7 +16,7 @@ function deleteAction(request, response) {
 function formAction(request, response) {
     let book = { id: '', title: '', author: '' };
     if(request.params.id) {
-        movie = model.getAll(parseInt(request.params.id, 10));
+        book = model.get(parseInt(request.params.id, 10));
     }
     const body = form(book);
     response.send(body);
