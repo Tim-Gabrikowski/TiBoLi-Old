@@ -1,0 +1,27 @@
+module.exports = function render(book) {
+    return `
+        <!DOCTYPE html>
+        <html lang="de">
+            <head>
+                <meta charset="UTF-8">
+                <link rel="stylesheet" href="/styles.css" />
+                <title>Bücherliste</title>
+            </head>
+            <body>
+                <form action="/books/save" method="POST">
+                    <input type="hidden" id="id" name="id" value="${book.id}">
+                    <div>
+                        <label for="title">Titel:</label>
+                        <input type="text" id="title" name="title" value="${book.title}">
+                    </div>
+                    <div>
+                        <label for="author">Autor:</label>
+                        <input type="text" id="author" name="author" value="${book.author}">
+                    </div>
+                    <div>
+                        <button type="submit">speichern</button>
+                    </div>
+                </form>
+            </body>
+        </html>`;
+};

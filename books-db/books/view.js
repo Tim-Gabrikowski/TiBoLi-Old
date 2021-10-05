@@ -10,14 +10,22 @@ module.exports = function render(books) {
         <body>
             <table>
                 <thead>
-                    <tr><th>ID</th><th>Title</th><th>Author</th></tr>
+                    <tr><th>ID</th><th>Title</th><th>Author</th><th></th><th></th></tr>
                 </thead>
                 <tbody>
                     ${books
-                        .map(book => `<tr><td>${book.id}</td><td>${book.title}</td><td>${book.author}</td></tr>`)
+                        .map(book => `
+                        <tr>
+                            <td>${book.id}</td>
+                            <td>${book.title}</td>
+                            <td>${book.author}</td>
+                            <td><a href="/books/delete/${book.id}">löschen</a></td>
+                            <td><a href="/books/form/${book.id}">bearbeiten</a></td>
+                        </tr>`)
                         .join('')}
                 </tbody>
             </table>
+            <a href="/movie/form">neu</a>
         </body>
     </html>`;
 }
