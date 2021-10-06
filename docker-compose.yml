@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+
+  mysql_database:
+    image: mariadb:10.6
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_database_volume:/var/lib/mysql
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: s3cret
+
+  phpmyadmin:
+    image: phpmyadmin:5.1
+    ports:
+      - "3386:80"
+    links:
+      - "mysql_database:db"
+    environment:
+      PMA_USER: root
+      PMA_PASSWORD: s3cret
+      PMA_HOST: db
+
+  application:
+    image: node:14
+    ports:
+      - "3000:3000"
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app
+    command: "npm start"
+
+volumes:
+  mysql_database_volume: {}
