@@ -6,6 +6,8 @@
   ],
   "ext": "ts,json,js,pug",
   "watch": [
-    "routes/**/*"
+    "routes",
+    "books",
+    "views"
   ]
 }
