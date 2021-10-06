@@ -8,6 +8,7 @@
   "watch": [
     "routes",
     "books",
+    "booksapi",
     "views"
   ]
 }
