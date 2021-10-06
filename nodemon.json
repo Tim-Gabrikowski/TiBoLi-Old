@@ -1,0 +1,13 @@
+{
+  "verbose": true,
+  "ignore": [
+    "*.test.js",
+    "node_modules/*"
+  ],
+  "ext": "ts,json,js,pug",
+  "watch": [
+    "routes",
+    "books",
+    "views"
+  ]
+}
