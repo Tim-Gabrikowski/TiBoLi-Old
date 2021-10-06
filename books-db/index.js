@@ -8,9 +8,8 @@ const app = express();
 app.get('/', (req, res) => res.redirect('/books')); //Redirect from localhost:8080 to localhost:8080/books
 
 app.use(express.static(__dirname + '/public'));
+
 app.use(bodyParser.urlencoded({extended: false}));
-
-
 
 app.use('/books', booksRouter);
 

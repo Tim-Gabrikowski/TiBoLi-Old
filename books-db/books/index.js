@@ -3,8 +3,6 @@ const router = express.Router();
 const { listAction, deleteAction, formAction, saveAction } = require('./controller');
 
 
-
-
 router.get('/', listAction);
 router.get('/delete/:id', deleteAction);
 router.get('/form/:id?', formAction);
