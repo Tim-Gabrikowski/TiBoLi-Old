@@ -1,33 +1,46 @@
-
-// Node.js MySQL Result Object Example
-// include mysql module
 var mysql = require('mysql8.0');
   
-// create a connection variable with the required details
+
 var con = mysql.createConnection({
-  host: "localhost",    // ip address of server running mysql
-  user: "user",    // user name to your mysql database
-  password: "user",    // corresponding password
-  database: "booksdb" // use the specified database
+  host: "localhost",    
+  user: "user",   
+  password: "user",    
+  database: "booksdb" 
 });
 var data = [{id: 0, title: '', author: ''}];
 
-  
-// make to connection to the database.
 con.connect(function(err) {
     if (err) throw err;
-    getAll();
+    
 });
 
-function getAll() {
-    con.query("SELECT * FROM books", function (err, result, fields) {
-        if (err) throw err;
-        setValue(result);        
+query = (sql) => {
+    return new Promise((resolve, reject)=>{
+        con.query(sql,  (error, results)=>{
+            if(error){
+                return reject(error);
+            }
+            return resolve(results);
+        });
     });
+};
+
+async function GetAllQuery () {
+    try{
+        const result = await query('SELECT * FROM books');
+        data = result;
+    } catch(error) {
+        console.log(error)
+    }
 }
 
-function setValue(value) {
-    data = value;
-    console.log('data was set');
-    console.log(data[0]);
-}
+
+module.exports = {
+    getAll(){
+        GetAllQuery();
+        setTimeout(function afterTimeout(){
+        console.log(data)
+        return data;
+        }, 1000);
+    }
+};
