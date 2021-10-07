@@ -1,11 +1,11 @@
 const model = require('./model');
-const view = require('./view');
+const { render } = require('./view');
 const form = require('./form');
 
 
 function listAction(request, response) {
     const books = model.getAll();
-    const body = view(books);
+    const body = render(books);
     response.send(body);
 }
 function deleteAction(request, response) {

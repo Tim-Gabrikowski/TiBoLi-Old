@@ -1,4 +1,10 @@
-let data = [
+const database = require('./database');
+let data = [{id: 0, title: '', author: ''}];
+database.getAll().then(() => {
+    data = database.getData();
+});
+
+/* [
     { id: 1, title: 'How To', author: 'Randal Munroe'},
     { id: 2, title: 'What if', author: 'Randal Munroe'},
     { id: 3, title: 'Der Marsianer', author: 'Andy Weir'},
@@ -8,7 +14,7 @@ let data = [
     { id: 7, title: 'Das Känguru Manifest', author: 'Mark-Uwe Kling'},
     { id: 8, title: 'Die Känguru Offenbarungen', author: 'Mark-Uwe Kling'},
     { id: 9, title: 'Die Känguru Apokryphen', author: 'Mark-Uwe Kling'},
-];
+]; */
 
 function getNextId() {
     return Math.max(...data.map(book => book.id)) + 1;

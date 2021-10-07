@@ -1,5 +1,4 @@
 var mysql = require('mysql8.0');
-  
 
 var con = mysql.createConnection({
   host: "localhost",    
@@ -7,6 +6,7 @@ var con = mysql.createConnection({
   password: "user",    
   database: "booksdb" 
 });
+
 var data = [{id: 0, title: '', author: ''}];
 
 con.connect(function(err) {
@@ -16,8 +16,8 @@ con.connect(function(err) {
 
 query = (sql) => {
     return new Promise((resolve, reject)=>{
-        con.query(sql,  (error, results)=>{
-            if(error){
+        con.query(sql, (error, results)=>{
+            if(error) {
                 return reject(error);
             }
             return resolve(results);
@@ -25,22 +25,15 @@ query = (sql) => {
     });
 };
 
-async function GetAllQuery () {
-    try{
-        const result = await query('SELECT * FROM books');
-        data = result;
-    } catch(error) {
-        console.log(error)
-    }
-}
-
-
 module.exports = {
-    getAll(){
-        GetAllQuery();
-        setTimeout(function afterTimeout(){
-        console.log(data)
+    async getAll() {
+        try {
+            data = await query('SELECT * FROM books');
+        } catch(error) {
+            console.log(error)
+        }
+    },
+    getData() {
         return data;
-        }, 1000);
     }
 };
