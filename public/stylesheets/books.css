@@ -1,35 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap');
 
+body {
+    background-color: rgb(39, 39, 39);
+    text-align: center;
+}
+
 table {
+    color: whitesmoke;
     border-spacing: 0px;
+    position: absolute;
+    top: 5%;
+    left: 25%;
+    
 }
 th {
-    background-color: white;
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     color: lightgray;
     text-align: left;
     padding: 5px;
 }
 td {
+    text-align: left;
     border-top: 1px solid darkgray;
     border-bottom: 1px solid darkgray;
     padding: 5px;
+    font-family: 'Open Sans', sans-serif;
 }
 tr:hover{
-    background-color: lightgray;
+    background-color: rgb(65, 65, 65);
     transition: 0.25s;
 }
 
-.infobox{
+.siteBox {
+    color: whitesmoke;
     position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 20%;
+    height: 100%;
+    border: dotted 4px gray;
+}
+.optionsBox {
+    text-align: center;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 80%;
+    width: 100%;
+}
+
+.infobox{
+    color: whitesmoke;
+    position: absolute;
     bottom: 0px;
     right: 0px;
-    height: auto;
-    width: auto;
-    border-style: dotted;
+    height: 20%;
+    width: 100%;
+    border-top: dashed;
     border-color: darkgray;
 }
+
 h2{
     font-family: 'Roboto', sans-serif;
 }
@@ -42,6 +74,8 @@ button {
     border-radius: 10px;
     border-style: dashed;
     border-color: rgb(139, 139, 139);
+    background-color: rgb(65, 65, 65);
+    color: whitesmoke;
 }
 .deleteButton:hover {
     border-color: rgb(255, 0, 0);
@@ -56,5 +90,12 @@ button {
 .newButton:hover {
     border-color: rgb(0, 255, 0);
     background-color: rgb(174, 255, 174);
+    color: black;
     transition: 0.25s;
+}
+.newButton {
+    width: 75%;
+    border-radius: 5px;
+    height: 30px;
+    
 }

@@ -5,7 +5,7 @@ const form = require('./form');
 
 function listAction(request, response) {
     const books = model.getAll();
-    const body = render(books);
+    const body = render(books, 1);
     response.send(body);
 }
 function deleteAction(request, response) {

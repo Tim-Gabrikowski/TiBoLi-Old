@@ -3,11 +3,11 @@ var template = [{id: 0, title: '', author: '', deleted: 0}];
 let table = '';
 
 module.exports = { 
-    render(books) {
+    render(books, deleted) {
         template = books;
         table = '';
         for(let i = 0; i < template.length; i++) {
-            if(books[i].deleted === 0){
+            if(books[i].deleted === deleted){
                 let row =
                     '<tr>' +
                         '<td>' + template[i].id + '</td>' +
@@ -37,11 +37,18 @@ module.exports = {
                         ${table}
                     </tbody>
                 </table>
-                <a href="/books/form"><button class="newButton">neu</button></a>
-                <div class="infobox">
-                    <h2>&copy Tim Gabrikowski</h2>
-                    <p>Alle Rechte vorbehalten.</p>
+                <div class="siteBox">
+                    <div class="optionsBox">
+                        <h1>Bücher</h1>
+                        <a href="/books/form"><button class="newButton">neu</button></a>
+                    </div>
+                    <div class="infobox">
+                        <h2>&copy Tim Gabrikowski</h2>
+                        <p>Alle Rechte vorbehalten.</p>
+                    </div>
                 </div>
+                
+                
             </body>
         </html>`;
     },

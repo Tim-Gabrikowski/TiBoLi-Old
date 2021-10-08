@@ -48,7 +48,8 @@ module.exports = {
         return data.find(book => book.id === id);
     },
     delete(id) {
-        data = data.filter(book => book.id !== id);
+        const index = data.findIndex(item => item.id === id);
+        data[index].deleted = 1;
         database.deleteData(id);
     },
     save(book) {
