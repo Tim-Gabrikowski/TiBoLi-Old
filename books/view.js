@@ -62,7 +62,7 @@ module.exports = {
                 <h1 class="headLine">${headline}</h1>
                 <table>
                     <thead>
-                        <tr><th>ID in database</th><th>Title</th><th>Author</th><th></th><th></th></tr>
+                        <tr><th>ID</th><th>Title</th><th>Author</th><th></th><th></th></tr>
                     </thead>
                     <tbody>
                         ${table}
