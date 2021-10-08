@@ -2,15 +2,24 @@ const model = require('./model');
 const { render } = require('./view');
 const form = require('./form');
 
-
-function listAction(request, response) {
+function listDeletedAction(request, response){
     const books = model.getAll();
     const body = render(books, 1);
+    response.send(body);
+}
+function listAction(request, response) {
+    const books = model.getAll();
+    const body = render(books, 0);
     response.send(body);
 }
 function deleteAction(request, response) {
     const id = parseInt(request.params.id, 10);
     model.delete(id);
+    response.redirect(request.baseUrl);
+}
+function recoverAction(request, response) {
+    const id = parseInt(request.params.id, 10);
+    model.recover(id);
     response.redirect(request.baseUrl);
 }
 function formAction(request, response) {
@@ -41,7 +50,9 @@ function saveAction(request, response) {
 
 module.exports = {
     listAction,
+    listDeletedAction,
     deleteAction,
+    recoverAction,
     formAction,
     saveAction,
 };

@@ -33,6 +33,13 @@ async function deleteItem(id) {
         console.log(error)
     }
 }
+async function recoverItem(id) {
+    try {
+        data = await query(`UPDATE books SET deleted = '0' WHERE id = ${id}`);
+    } catch(error) {
+        console.log(error)
+    }
+}
 async function createItem(title, author) {
     try {
         console.log('DB.createItem');
@@ -62,6 +69,9 @@ module.exports = {
     },
     deleteData(id){
         deleteItem(id);
+    },
+    recoverData(id){
+        recoverItem(id);
     },
     createData(book){
         console.log('DB.createData!');

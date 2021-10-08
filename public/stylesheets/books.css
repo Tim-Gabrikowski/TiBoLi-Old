@@ -10,7 +10,7 @@ table {
     color: whitesmoke;
     border-spacing: 0px;
     position: absolute;
-    top: 5%;
+    top: 15%;
     left: 25%;
     
 }
@@ -62,6 +62,17 @@ tr:hover{
     border-color: darkgray;
 }
 
+.headLine {
+    position: absolute;
+    top: 0%;
+    left: 25%;
+    transform: translate(0, 0);
+}
+
+h1{
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+}
 h2{
     font-family: 'Roboto', sans-serif;
 }
@@ -82,14 +93,20 @@ button {
     background-color: rgb(255, 174, 174);
     transition: 0.25s;
 }
+.recoverButton:hover {
+    border-color: rgb(43, 255, 0);
+    background-color: rgb(187, 255, 174);
+    color: black;
+    transition: 0.25s;
+}
 .editButton:hover {
     border-color: rgb(0, 0, 255);
     background-color: rgb(174, 175, 255);
     transition: 0.25s;
 }
 .newButton:hover {
-    border-color: rgb(0, 255, 0);
-    background-color: rgb(174, 255, 174);
+    border-color: rgb(0, 0, 166);
+    background-color: rgb(67, 68, 100);
     color: black;
     transition: 0.25s;
 }
@@ -97,5 +114,28 @@ button {
     width: 75%;
     border-radius: 5px;
     height: 30px;
-    
+}
+
+.deletedButton {
+    width: 75%;
+    border-radius: 5px;
+    height: 30px;
+}
+.deletedButton:hover {
+    border-color: rgb(0, 0, 116);
+    background-color: rgb(67, 68, 100);
+    color: black;
+    transition: 0.25s;
+}
+
+.activeButton {
+    width: 75%;
+    border-radius: 5px;
+    height: 30px;
+}
+.activeButton:hover {
+    border-color: rgb(0, 0, 116);
+    background-color: rgb(67, 68, 100);
+    color: black;
+    transition: 0.25s;
 }

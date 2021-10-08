@@ -56,4 +56,9 @@ module.exports = {
         console.log('model.Save!');
         book.id === '0' ? insert(book) : update(book);
     },
+    recover(id) {
+        const index = data.findIndex(item => item.id === id);
+        data[index].deleted = 0;
+        database.deleteData(id);
+    },
 };
