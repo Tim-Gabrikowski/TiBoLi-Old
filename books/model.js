@@ -1,8 +1,13 @@
 const database = require('./database');
-let data = [{id: 0, title: '', author: ''}];
-database.getAll().then(() => {
-    data = database.getData();
-});
+let data = [{id: 0, title: '', author: '', deleted: 0}];
+
+getDataFromDatabase();
+
+function getDataFromDatabase(){
+    database.getAll().then(() => {
+        data = database.getData();
+    });
+}
 
 /* [
     { id: 1, title: 'How To', author: 'Randal Munroe'},
@@ -17,20 +22,26 @@ database.getAll().then(() => {
 ]; */
 
 function getNextId() {
-    return Math.max(...data.map(book => book.id)) + 1;
+    return data[data.length - 1].id + 1;
 }
 function insert(book) {
     book.id = getNextId();
+    book.deleted = 0;
     data.push(book);
+    console.log('model.insert!');
+    database.createData(book);
 }
 function update(book) {
     book.id = parseInt(book.id, 10);
     const index = data.findIndex(item => item.id === book.id);
     data[index] = book;
+    console.log('model.update!');
+    database.updateData(book);
 }
 
 module.exports = {
     getAll() {
+        getDataFromDatabase();
         return data;
     },
     get(id) {
@@ -38,8 +49,10 @@ module.exports = {
     },
     delete(id) {
         data = data.filter(book => book.id !== id);
+        database.deleteData(id);
     },
     save(book) {
-        book.id === '' ? insert(book) : update(book);
+        console.log('model.Save!');
+        book.id === '0' ? insert(book) : update(book);
     },
 };

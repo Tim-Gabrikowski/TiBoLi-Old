@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap');
+
 table {
     border-spacing: 0px;
 }
@@ -10,8 +13,48 @@ th {
 }
 td {
     border-top: 1px solid darkgray;
+    border-bottom: 1px solid darkgray;
     padding: 5px;
 }
-tbody tr:hover{
+tr:hover{
     background-color: lightgray;
+    transition: 0.25s;
+}
+
+.infobox{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    height: auto;
+    width: auto;
+    border-style: dotted;
+    border-color: darkgray;
+}
+h2{
+    font-family: 'Roboto', sans-serif;
+}
+p{
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+button {
+    border-radius: 10px;
+    border-style: dashed;
+    border-color: rgb(139, 139, 139);
+}
+.deleteButton:hover {
+    border-color: rgb(255, 0, 0);
+    background-color: rgb(255, 174, 174);
+    transition: 0.25s;
+}
+.editButton:hover {
+    border-color: rgb(0, 0, 255);
+    background-color: rgb(174, 175, 255);
+    transition: 0.25s;
+}
+.newButton:hover {
+    border-color: rgb(0, 255, 0);
+    background-color: rgb(174, 255, 174);
+    transition: 0.25s;
 }

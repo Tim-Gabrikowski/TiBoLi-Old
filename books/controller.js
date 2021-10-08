@@ -14,18 +14,25 @@ function deleteAction(request, response) {
     response.redirect(request.baseUrl);
 }
 function formAction(request, response) {
-    let book = { id: '', title: '', author: '' };
+    var action = 'New';
+    var book = { 
+        id: 0,
+        title: '', 
+        author: '' 
+    };
     if(request.params.id) {
         book = model.get(parseInt(request.params.id, 10));
+        action = 'Edit';
     }
-    const body = form(book);
+    const body = form(book, action);
     response.send(body);
 }
 function saveAction(request, response) {
+    console.log('saveAction!');
     const book = {
         id: request.body.id,
         title: request.body.title,
-        author: request.body.author,
+        author: request.body.author
     };
     model.save(book);
     response.redirect(request.baseUrl);

@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
+
+body {
+    background-color: rgb(39, 39, 39);
+    text-align: center;
+    font-family: 'Noto Sans Mono', monospace;
+}
+h1 {
+    color: rgb(216, 216, 216);
+}
+
+.formBox {
+    background-color: rgb(40, 40, 40);
+    border-style: solid;
+    border: solid 5px;
+    border-color: orangered;
+    border-radius: 10px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 60%;
+    width: 25%;
+
+    text-align: center;
+}
+.inputBoxes {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    width: 100%;
+    font-size: large;
+}
+
+label {
+    color: whitesmoke;
+}
+input {
+    border-color: orange;
+    border-radius: 20px;
+    border-style: solid 5px;
+    width: 50%;
+    height: 30px;
+    background: none;
+    color: whitesmoke;
+    text-align: center;
+}
+input:focus {
+    width: 75%;
+    transition: 0.25s;
+
+    border-color: orange;
+    border-radius: 20px;
+    border-style: solid 5px;
+    background: none;
+    color: whitesmoke;
+}
+.buttons {
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    
+}
+.submitButton {
+    border-radius: 25px;
+    border-color: orange;
+    font-size: 20px;
+    height: 40px;
+    width: 50%;
+    background: none;
+    color: orangered;
+}
+.submitButton:hover {
+    border-radius: 25px;
+    border-color: orange;
+    font-size: 20px;
+    height: 40px;
+    width: 75%;
+    color: orangered;
+    transition: 0.25s;
+}
