@@ -39,6 +39,7 @@ function update(book) {
     database.updateData(book);
 }
 
+
 module.exports = {
     getAll() {
         getDataFromDatabase();
@@ -59,6 +60,26 @@ module.exports = {
     recover(id) {
         const index = data.findIndex(item => item.id === id);
         data[index].deleted = 0;
-        database.deleteData(id);
+        database.recoverData(id);
     },
-};
+    search(searchTerm = '') {
+        console.log('Suchausdruck:' + searchTerm)
+        var result = [];
+        for(var i = 0; i< data.length; i++) {
+
+            var title = data[i].title.toLowerCase();
+            var author = data[i].author.toLowerCase();
+            console.log(title);
+            console.log(author);
+            searchTerm = searchTerm.toLowerCase();
+
+
+            if(title.includes(searchTerm)) {
+                result[result.length] = data[i];
+            } else if(author.includes(searchTerm)) {
+                result[result.length] = data[i];
+            }
+        }
+        return result;
+    },
+}

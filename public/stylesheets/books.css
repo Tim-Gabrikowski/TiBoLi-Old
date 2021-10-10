@@ -10,7 +10,7 @@ table {
     color: whitesmoke;
     border-spacing: 0px;
     position: absolute;
-    top: 15%;
+    top: 25%;
     left: 25%;
     
 }
@@ -35,6 +35,36 @@ tr:hover{
     background-color: rgb(65, 65, 65);
     transition: 0.25s;
 }
+.searchBox {
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    width: 50%;
+    text-align: left;
+    color: orange;
+    font-family: 'Roboto', sans-serif;
+}
+input {
+    border-color: orange;
+    border-radius: 20px;
+    border-style: solid 5px;
+    width: 50%;
+    height: 30px;
+    background: none;
+    color: whitesmoke;
+    text-align: center;
+}
+input:focus {
+    width: 75%;
+    transition: 0.25s;
+
+    border-color: orange;
+    border-radius: 20px;
+    border-style: solid 5px;
+    background: none;
+    color: whitesmoke;
+}
+
 
 .siteBox {
     color: whitesmoke;

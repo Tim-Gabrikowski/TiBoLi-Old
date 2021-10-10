@@ -4,7 +4,7 @@ var con = mysql.createConnection({
   host: "localhost",    
   user: "user",   
   password: "user",    
-  database: "booksdb" 
+  database: "tiboli" 
 });
 
 
@@ -74,10 +74,6 @@ module.exports = {
         recoverItem(id);
     },
     createData(book){
-        console.log('DB.createData!');
-        console.log(book);
-        console.log(book.title);
-        console.log(book.author);
         createItem(book.title, book.author);
     },
     updateData(book){

@@ -9,16 +9,19 @@ let deletedHeadline = 'Gelöschte Bücher';
 let activeHeadline = 'Aktive Bücher';
 
 module.exports = { 
-    render(books, deleted) {
+    render(books, deleted , searchTerm = '') {
 
         let button = '';
         let headline = '';
+        let searchLink = '';
         if(deleted === 1) {
             button = activeButton;
             headline = deletedHeadline;
+            searchLink = '/books/deleted/search/';
         } else {
             button = deletedButton;
             headline = activeHeadline;
+            searchLink = '/books/search/';
         }
 
         template = books;
@@ -60,6 +63,16 @@ module.exports = {
             </head>
             <body>
                 <h1 class="headLine">${headline}</h1>
+                <div class="searchBox">
+                    <form action="${searchLink}" method="get">
+                        <div class="searchInput">
+                            <label for="search">Suche:</label>
+                            <input type="text" id="searchTerm" name="searchTerm" value="${searchTerm}">
+                            <button class="searchSubmit" type="submit">Suchen</button>
+                        </div>
+                        
+                    </form>
+                </div>
                 <table>
                     <thead>
                         <tr><th>ID</th><th>Title</th><th>Author</th><th></th><th></th></tr>

@@ -41,10 +41,27 @@ function saveAction(request, response) {
     const book = {
         id: request.body.id,
         title: request.body.title,
-        author: request.body.author
+        author: request.body.author,
+        deleted: 0
     };
     model.save(book);
     response.redirect(request.baseUrl);
+}
+function searchAction(request, response) {
+
+    var searchTerm = '';
+    searchTerm = request.query.searchTerm;
+    books = model.search(searchTerm);
+    body = render(books, 0, searchTerm);
+    response.send(body);
+}
+function searchDeletedAction(request, response) {
+
+    var searchTerm = '';
+    searchTerm = request.query.searchTerm;
+    books = model.search(searchTerm);
+    body = render(books, 1, searchTerm);
+    response.send(body);
 }
 
 
@@ -55,4 +72,6 @@ module.exports = {
     recoverAction,
     formAction,
     saveAction,
+    searchAction,
+    searchDeletedAction,
 };
