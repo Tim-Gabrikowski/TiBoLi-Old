@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www.ts",
+    "start-inspect": "nodemon --inspect=0.0.0.0:9292 ./bin/www.ts",
     "ecosystem": "docker-compose up"
   },
   "author": "Tim-Gabrikowski",

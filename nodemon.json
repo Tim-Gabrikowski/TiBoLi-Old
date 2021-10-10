@@ -10,5 +10,8 @@
     "books",
     "booksapi",
     "views"
-  ]
+  ],
+  "execMap": {
+    "ts": "node --require ts-node/register"
+  }
 }
