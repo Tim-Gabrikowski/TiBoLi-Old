@@ -26,6 +26,8 @@ services:
     image: node:14
     ports:
       - "3000:3000"
+    links:
+      - "mysql_database:db"
     working_dir: /usr/src/app
     volumes:
       - ./:/usr/src/app
