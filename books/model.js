@@ -1,5 +1,7 @@
+const { STRING } = require('mysql8.0/lib/protocol/constants/types');
 const database = require('./database');
-let data = [{id: 0, title: '', author: '', deleted: 0}];
+const date = require('./date');
+let data = [{id: 0, title: '', author: '', deleted: 0, deletedDate: ''}];
 
 getDataFromDatabase();
 
@@ -51,6 +53,8 @@ module.exports = {
     delete(id) {
         const index = data.findIndex(item => item.id === id);
         data[index].deleted = 1;
+        data[index].deletedDate = String(date.getDate());
+        console.log(data[index]);
         database.deleteData(id);
     },
     save(book) {
@@ -60,6 +64,7 @@ module.exports = {
     recover(id) {
         const index = data.findIndex(item => item.id === id);
         data[index].deleted = 0;
+        data[index].deletedDate = '';
         database.recoverData(id);
     },
     search(searchTerm = '') {

@@ -1,6 +1,7 @@
 const model = require('./model');
 const { render } = require('./view');
 const form = require('./form');
+const { url } = require('inspector');
 
 function listDeletedAction(request, response){
     const books = model.getAll();
@@ -20,7 +21,8 @@ function deleteAction(request, response) {
 function recoverAction(request, response) {
     const id = parseInt(request.params.id, 10);
     model.recover(id);
-    response.redirect(request.baseUrl);
+    var url = request.baseUrl + '/deleted';
+    response.redirect(url);
 }
 function formAction(request, response) {
     var action = 'New';
@@ -42,7 +44,8 @@ function saveAction(request, response) {
         id: request.body.id,
         title: request.body.title,
         author: request.body.author,
-        deleted: 0
+        deleted: 0,
+        deleteDate: new Date()
     };
     model.save(book);
     response.redirect(request.baseUrl);

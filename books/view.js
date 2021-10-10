@@ -1,4 +1,4 @@
-var template = [{id: 0, title: '', author: '', deleted: 0}];
+var template = [{id: 0, title: '', author: '', deleted: 0, deleteDate: new Date()}];
 
 let table = '';
 

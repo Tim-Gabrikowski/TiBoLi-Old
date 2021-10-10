@@ -1,4 +1,6 @@
 var mysql = require('mysql8.0');
+const { NULL } = require('mysql8.0/lib/protocol/constants/types');
+var date = require('./date');
 
 var con = mysql.createConnection({
   host: "localhost",    
@@ -9,7 +11,7 @@ var con = mysql.createConnection({
 
 
 
-var data = [{id: 0, title: '', author: '', deleted: 0}];
+var data = [{id: 0, title: '', author: '', deleted: 0, deleteDate: ''}];
 
 con.connect(function(err) {
     if (err) throw err;
@@ -28,14 +30,14 @@ query = (sql) => {
 };
 async function deleteItem(id) {
     try {
-        data = await query(`UPDATE books SET deleted = '1' WHERE id = ${id}`);
+        data = await query(`UPDATE books SET deleted = '1', deletedDate = '${date.getDate()}' WHERE id = ${id}`);
     } catch(error) {
         console.log(error)
     }
 }
 async function recoverItem(id) {
     try {
-        data = await query(`UPDATE books SET deleted = '0' WHERE id = ${id}`);
+        data = await query(`UPDATE books SET deleted = '0', deletedDate = NULL WHERE id = ${id}`);
     } catch(error) {
         console.log(error)
     }
