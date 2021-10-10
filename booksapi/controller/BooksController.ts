@@ -1,17 +1,10 @@
-import BooksService from '../service/BooksService';
+import BooksService, { Book } from '../service/BooksService';
 
 export default class BooksController {
 
-    static listAction (req, res) {
-        console.log(BooksService);
+    static async listAction(req, res) {
         const booksService = new BooksService();
-        const books = booksService.getBooks();
-        books.then((books)=>{
-        let result = '';
-            books.forEach((book) => {
-                result += `name: ${book.name} <br>`;
-            });
-            res.send(result);
-        });
+        const books: Book[] = await booksService.getBooks();
+        res.json(books);
     }
 }

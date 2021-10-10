@@ -1,24 +1,23 @@
 let mysql = require('promise-mysql');
 
-export default class BooksService {
-    constructor() {
-        console.log('constructor');
-    }
+export interface Book {
+    id: number,
+    name: string
+}
 
-    getBooks() {
+export default class BooksService {
+    getBooks(): Promise<Book[]> {
         return this.selectFromBooks();
     }
 
-    private async selectFromBooks() {
+    private async selectFromBooks(): Promise<any> {
         const connectionOptions = {
             host: 'db',
             user: 'root',
             password: 's3cret',
             database: 'tiboli',
         };
-        let connection = await mysql.createConnection(connectionOptions);
-        let books = await connection.query('SELECT * from books;')
-
-        return books;
+        const connection = await mysql.createConnection(connectionOptions);
+        return connection.query('SELECT * from books;')
     }
 }
