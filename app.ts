@@ -7,7 +7,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const booksRouter = require("./books");
-const booksApiRouter = require('./booksapi');
+
+import booksApiRouter from './booksapi';
 
 var app = express();
 

@@ -1,8 +1,10 @@
-const booksService = require('../service/books.ts')
+import BooksService from '../service/BooksService';
 
-module.exports = {
-    listAction: (req, res) => {
+export default class BooksController {
 
+    static listAction (req, res) {
+        console.log(BooksService);
+        const booksService = new BooksService();
         const books = booksService.getBooks();
         books.then((books)=>{
         let result = '';
@@ -12,4 +14,4 @@ module.exports = {
             res.send(result);
         });
     }
-};
+}

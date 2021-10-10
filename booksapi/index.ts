@@ -1,9 +1,7 @@
-const express = require('express');
-
-const { listAction } = require('./controller/books.ts');
+import express from 'express';
+import BooksController  from './controller/BooksController';
 
 let booksApiRouter = express.Router();
+booksApiRouter.get('/', BooksController.listAction);
 
-booksApiRouter.get('/', listAction);
-
-module.exports = booksApiRouter;
+export default booksApiRouter
