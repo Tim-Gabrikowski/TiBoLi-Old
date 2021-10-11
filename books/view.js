@@ -64,15 +64,15 @@ module.exports = {
             <body>
                 <h1 class="headLine">${headline}</h1>
                 <div class="searchBox">
-                    <form action="${searchLink}" method="get">
-                        <div class="searchInput">
-                            <label for="search">Suche:</label>
-                            <input type="text" id="searchTerm" name="searchTerm" value="${searchTerm}">
-                            <button class="searchSubmit" type="submit">Suchen</button>
+                            <form action="${searchLink}" method="get">
+                                <div class="searchInput">
+                                    <label for="search">Suche:</label>
+                                    <input type="text" id="searchTerm" name="searchTerm" value="${searchTerm}">
+                                    <button class="searchSubmit" type="submit">Suchen</button>
+                                </div>
+                                
+                            </form>
                         </div>
-                        
-                    </form>
-                </div>
                 <table>
                     <thead>
                         <tr><th>ID</th><th>Title</th><th>Author</th><th></th><th></th></tr>

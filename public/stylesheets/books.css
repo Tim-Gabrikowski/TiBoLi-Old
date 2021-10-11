@@ -35,6 +35,7 @@ tr:hover{
     background-color: rgb(65, 65, 65);
     transition: 0.25s;
 }
+
 .searchBox {
     position: absolute;
     top: 15%;

@@ -3,6 +3,7 @@ const { render } = require('./view');
 const form = require('./form');
 const { url } = require('inspector');
 
+
 function listDeletedAction(request, response){
     const books = model.getAll();
     const body = render(books, 1);
@@ -66,6 +67,7 @@ function searchDeletedAction(request, response) {
     body = render(books, 1, searchTerm);
     response.send(body);
 }
+
 
 
 module.exports = {
