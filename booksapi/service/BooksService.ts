@@ -1,3 +1,5 @@
+import MySqlService from './MySqlService';
+
 let mysql = require('promise-mysql');
 
 export interface Book {
@@ -6,18 +8,30 @@ export interface Book {
 }
 
 export default class BooksService {
-    getBooks(): Promise<Book[]> {
-        return this.selectFromBooks();
+
+    constructor(private mySqlService: MySqlService) {
     }
 
-    private async selectFromBooks(): Promise<any> {
-        const connectionOptions = {
-            host: 'db',
-            user: 'root',
-            password: 's3cret',
-            database: 'tiboli',
-        };
-        const connection = await mysql.createConnection(connectionOptions);
-        return connection.query('SELECT * from books;')
+    getBooks(): Promise<Book[]> {
+        return this.findAll();
+    }
+
+    getBook(id: number): Promise<Book> {
+        return this.findById(id);
+    }
+
+    private async findAll(): Promise<Book[]> {
+
+        const connection = await this.mySqlService.getConnection();
+        return connection.query(`SELECT *
+                                 from books;`);
+    }
+
+    private async findById(id: number): Promise<Book> {
+        const connection = await this.mySqlService.getConnection();
+        const books = await connection.query(`SELECT *
+                                 from books
+                                 where id = ${id};`);
+        return books[0] === undefined ? null : books[0];
     }
 }
