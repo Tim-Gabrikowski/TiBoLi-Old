@@ -1,14 +1,14 @@
 import mysql from 'promise-mysql';
 
 export default class MySqlService {
-    private connection;
+    private static connection;
 
     public async getConnection() {
-        if (!this.connection) {
-            this.connection = await this.createConnection();
+        if (!MySqlService.connection) {
+            MySqlService.connection = await this.createConnection();
         }
 
-        return this.connection;
+        return MySqlService.connection;
     }
 
     private async createConnection(){

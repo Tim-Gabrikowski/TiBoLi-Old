@@ -12,9 +12,15 @@ booksApiRouter.get('/',
     (req, res) => {
         booksController.listAction(req, res);
     });
+
 booksApiRouter.get('/:id',
     (req, res, next) => {
         booksController.getByIdAction(req, res, next);
+    });
+
+booksApiRouter.put('/:id',
+    (req, res, next) => {
+        booksController.putByIdAction(req, res, next);
     });
 
 export default booksApiRouter
