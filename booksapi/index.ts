@@ -1,26 +1,12 @@
-import express, { Send } from 'express';
-import BooksController from './controller/BooksController';
-import BooksService from './service/BooksService';
-import MySqlService from './service/MySqlService';
+import express from 'express';
+import booksController from './controller/BooksController';
 
 let booksApiRouter = express.Router();
-let mySqlService  = new MySqlService();
-let booksService: BooksService = new BooksService(mySqlService);
-let booksController: BooksController = new BooksController(booksService);
 
-booksApiRouter.get('/',
-    (req, res) => {
-        booksController.listAction(req, res);
-    });
-
-booksApiRouter.get('/:id',
-    (req, res, next) => {
-        booksController.getByIdAction(req, res, next);
-    });
-
-booksApiRouter.put('/:id',
-    (req, res, next) => {
-        booksController.putByIdAction(req, res, next);
-    });
+booksApiRouter.get('/',booksController.listAction);
+booksApiRouter.get('/:id', booksController.getByIdAction);
+booksApiRouter.put('/:id', booksController.putByIdAction);
+booksApiRouter.post('/', booksController.postAction);
+booksApiRouter.delete('/:id', booksController.deleteAction);
 
 export default booksApiRouter

@@ -1,38 +1,32 @@
-import MySqlService from './MySqlService';
+import IBook from '../model/IBook';
+import Book from '../model/Book';
 
-export interface Book {
-    id: number,
-    name: string
-}
+class BooksService {
 
-export default class BooksService {
-
-    constructor(private mySqlService: MySqlService) {
+    getAll(): Promise<IBook[]> {
+        return Book.findAll();
     }
 
-    async getAll(): Promise<Book[]> {
-        const connection = await this.mySqlService.getConnection();
-        return connection.query(`SELECT *
-                                 from books;`);
+    getById(id: number): Promise<IBook> {
+        return Book.findByPk(id);
     }
 
-    async getById(id: number): Promise<Book> {
-        const connection = await this.mySqlService.getConnection();
-        const books = await connection.query(`SELECT *
-                                 from books
-                                 where id = ${id};`);
-        return books[0] === undefined ? null : books[0];
+    async update(id: number, book: IBook): Promise<IBook> {
+        book.id = undefined;
+        let currentBook = await Book.findByPk(id);
+        return await currentBook.update(book);
     }
 
-    async update(id: number, book: Book): Promise<boolean> {
-        const connection = await this.mySqlService.getConnection();
-        const updateResult = await connection.query(
-            `UPDATE books set name='${book.name}'
-                                 where id = ${id};`);
+    create(data): Promise<IBook> {
+        data.id = undefined;
+        return Book.create(data);
+    }
 
-        if (updateResult.affectedRows !== undefined && updateResult.affectedRows === 1) {
-            return true;
-        }
-        return false;
+    async delete(id: number) {
+        let currentBook = await Book.findByPk(id);
+        return currentBook.destroy();
     }
 }
+
+const booksService = new BooksService();
+export default booksService;
