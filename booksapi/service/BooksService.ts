@@ -1,5 +1,6 @@
 import IBook from '../model/IBook';
 import Book from '../model/Book';
+import Edition from '../model/Edition';
 
 class BooksService {
 
@@ -8,7 +9,7 @@ class BooksService {
     }
 
     getById(id: number): Promise<IBook> {
-        return Book.findByPk(id);
+        return Book.findByPk(id, {include: Edition});
     }
 
     async update(id: number, book: IBook): Promise<IBook> {
@@ -17,9 +18,9 @@ class BooksService {
         return await currentBook.update(book);
     }
 
-    create(data): Promise<IBook> {
-        data.id = undefined;
-        return Book.create(data);
+    create(bookData): Promise<IBook> {
+        bookData.id = undefined;
+        return Book.create(bookData);
     }
 
     async delete(id: number) {

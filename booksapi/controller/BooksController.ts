@@ -1,4 +1,3 @@
-import BooksService from '../service/BooksService';
 import { NextFunction, Request, Response } from 'express';
 import createError from 'http-errors';
 import IBook from '../model/IBook';

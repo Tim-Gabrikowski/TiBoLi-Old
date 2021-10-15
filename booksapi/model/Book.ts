@@ -1,10 +1,12 @@
 import { INTEGER, Model, STRING } from 'sequelize';
 import IBook from './IBook';
 import sequelize from '../../service/SequelizeService';
+import Edition from './Edition';
 
 export default class Book extends Model implements IBook {
     id!: number;
-    name!: string;
+    title!: string;
+    author!: string;
 };
 Book.init({
     id: {
@@ -12,7 +14,13 @@ Book.init({
         primaryKey: true,
         autoIncrement: true
     },
-    name: {
+    title: {
+        type: STRING
+    },
+    author: {
         type: STRING
     }
-}, {sequelize, modelName: 'books', timestamps: false});
+}, {sequelize, modelName: 'book', timestamps: false});
+
+Book.hasMany(Edition, {foreignKey: 'book_id'});
+Edition.belongsTo(Book, {foreignKey: 'book_id'});
