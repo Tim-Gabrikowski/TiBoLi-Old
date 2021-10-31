@@ -1,0 +1,88 @@
+{
+  "ISBN:9783453271678": {
+    "url": "https://openlibrary.org/books/OL27312435M/Artemis_Roman",
+    "key": "/books/OL27312435M",
+    "title": "Artemis: Roman",
+    "authors": [
+      {
+        "url": "https://openlibrary.org/authors/OL7234434A/Andy_Weir",
+        "name": "Andy Weir"
+      }
+    ],
+    "identifiers": {
+      "amazon": ["345327167X"],
+      "isbn_10": ["345327167X"],
+      "isbn_13": ["9783453271678"],
+      "openlibrary": ["OL27312435M"]
+    },
+    "publishers": [{ "name": "Heyne Verlag" }],
+    "publish_date": "Mar 05, 2018",
+    "subjects": [
+      {
+        "name": "Smuggling",
+        "url": "https://openlibrary.org/subjects/smuggling"
+      },
+      {
+        "name": "Conspiracies",
+        "url": "https://openlibrary.org/subjects/conspiracies"
+      },
+      { "name": "Fiction", "url": "https://openlibrary.org/subjects/fiction" },
+      { "name": "sci-fi", "url": "https://openlibrary.org/subjects/sci-fi" },
+      {
+        "name": "FICTION / Science Fiction / General",
+        "url": "https://openlibrary.org/subjects/fiction_/_science_fiction_/_general"
+      },
+      {
+        "name": "FICTION / Thrillers / Suspense",
+        "url": "https://openlibrary.org/subjects/fiction_/_thrillers_/_suspense"
+      },
+      {
+        "name": "Fiction, science fiction, hard science fiction",
+        "url": "https://openlibrary.org/subjects/fiction,_science_fiction,_hard_science_fiction"
+      },
+      {
+        "name": "Fiction, science fiction, action & adventure",
+        "url": "https://openlibrary.org/subjects/fiction,_science_fiction,_action_&_adventure"
+      },
+      {
+        "name": "Conspiraciones",
+        "url": "https://openlibrary.org/subjects/conspiraciones"
+      },
+      {
+        "name": "Contrabando",
+        "url": "https://openlibrary.org/subjects/contrabando"
+      },
+      { "name": "Luna", "url": "https://openlibrary.org/subjects/luna" },
+      {
+        "name": "Ficci\u00f3n",
+        "url": "https://openlibrary.org/subjects/ficci\u00f3n"
+      },
+      {
+        "name": "Spanish language materials",
+        "url": "https://openlibrary.org/subjects/spanish_language_materials"
+      },
+      {
+        "name": "nyt:combined-print-and-e-book-fiction=2017-12-03",
+        "url": "https://openlibrary.org/subjects/nyt:combined-print-and-e-book-fiction=2017-12-03"
+      },
+      {
+        "name": "New York Times bestseller",
+        "url": "https://openlibrary.org/subjects/new_york_times_bestseller"
+      }
+    ],
+    "subject_places": [
+      { "name": "Moon", "url": "https://openlibrary.org/subjects/place:moon" }
+    ],
+    "subject_people": [
+      {
+        "name": "Jazz Bashara",
+        "url": "https://openlibrary.org/subjects/person:jazz_bashara"
+      }
+    ],
+    "cover": {
+      "small": "https://covers.openlibrary.org/b/id/8783841-S.jpg",
+      "medium": "https://covers.openlibrary.org/b/id/8783841-M.jpg",
+      "large": "https://covers.openlibrary.org/b/id/8783841-L.jpg"
+    }
+  }
+}

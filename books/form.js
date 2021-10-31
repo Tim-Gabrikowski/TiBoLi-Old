@@ -1,6 +1,5 @@
 module.exports = function render(book, action) {
-    
-    return `
+  return `
         <!DOCTYPE html>
         <html lang="de">
             <head>

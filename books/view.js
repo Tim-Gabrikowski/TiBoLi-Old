@@ -1,59 +1,81 @@
-var template = [{id: 0, title: '', author: '', deleted: 0, deleteDate: new Date()}];
+var template = [
+  { id: 0, title: "", author: "", deleted: 0, deleteDate: new Date() },
+];
 
-let table = '';
+let table = "";
 
-let deletedButton = '<a href="/books/deleted"><button class="deletedButton">gelöschte Bücher</button></a>';
-let activeButton = '<a href="/books/"><button class="activeButton">aktive Bücher</button></a>'
+let deletedButton =
+  '<a href="/books/deleted"><button class="deletedButton">gelöschte Bücher</button></a>';
+let activeButton =
+  '<a href="/books/"><button class="activeButton">aktive Bücher</button></a>';
 
-let deletedHeadline = 'Gelöschte Bücher';
-let activeHeadline = 'Aktive Bücher';
+let deletedHeadline = "Gelöschte Bücher";
+let activeHeadline = "Aktive Bücher";
 
-module.exports = { 
-    render(books, deleted , searchTerm = '') {
+module.exports = {
+  render(books, deleted, searchTerm = "") {
+    let button = "";
+    let headline = "";
+    let searchLink = "";
+    if (deleted === 1) {
+      button = activeButton;
+      headline = deletedHeadline;
+      searchLink = "/books/deleted/search/";
+    } else {
+      button = deletedButton;
+      headline = activeHeadline;
+      searchLink = "/books/search/";
+    }
 
-        let button = '';
-        let headline = '';
-        let searchLink = '';
-        if(deleted === 1) {
-            button = activeButton;
-            headline = deletedHeadline;
-            searchLink = '/books/deleted/search/';
+    template = books;
+    table = "";
+    for (let i = 0; i < template.length; i++) {
+      if (books[i].deleted === deleted) {
+        if (books[i].deleted === 0) {
+          let row =
+            "<tr>" +
+            "<td>" +
+            template[i].id +
+            "</td>" +
+            "<td>" +
+            template[i].title +
+            "</td>" +
+            "<td>" +
+            template[i].author +
+            "</td>" +
+            '<td><a href="/books/delete/' +
+            template[i].id +
+            '"><button class="deleteButton">löschen</button></a></td>' +
+            '<td><a href="/books/form/' +
+            template[i].id +
+            '"><button class="editButton">bearbeiten</button></a></td>' +
+            "</tr>";
+          table += row;
         } else {
-            button = deletedButton;
-            headline = activeHeadline;
-            searchLink = '/books/search/';
+          let row =
+            "<tr>" +
+            "<td>" +
+            template[i].id +
+            "</td>" +
+            "<td>" +
+            template[i].title +
+            "</td>" +
+            "<td>" +
+            template[i].author +
+            "</td>" +
+            '<td><a href="/books/recover/' +
+            template[i].id +
+            '"><button class="recoverButton">wiederherstellen</button></a></td>' +
+            '<td><a href="/books/form/' +
+            template[i].id +
+            '"><button class="editButton">bearbeiten</button></a></td>' +
+            "</tr>";
+          table += row;
         }
+      }
+    }
 
-        template = books;
-        table = '';
-        for(let i = 0; i < template.length; i++) {
-            if(books[i].deleted === deleted) {
-                if(books[i].deleted === 0){
-                    let row =
-                        '<tr>' +
-                            '<td>' + template[i].id + '</td>' +
-                            '<td>' + template[i].title + '</td>' +
-                            '<td>' + template[i].author + '</td>' +
-                            '<td><a href="/books/delete/' + template[i].id + '"><button class="deleteButton">löschen</button></a></td>' +
-                            '<td><a href="/books/form/' + template[i].id + '"><button class="editButton">bearbeiten</button></a></td>' + 
-                        '</tr>';
-                    table += row;
-                }  else {
-                    let row =
-                        '<tr>' +
-                            '<td>' + template[i].id + '</td>' +
-                            '<td>' + template[i].title + '</td>' +
-                            '<td>' + template[i].author + '</td>' +
-                            '<td><a href="/books/recover/' + template[i].id + '"><button class="recoverButton">wiederherstellen</button></a></td>' +
-                            '<td><a href="/books/form/' + template[i].id + '"><button class="editButton">bearbeiten</button></a></td>' + 
-                        '</tr>';
-                    table += row;
-                }
-            }
-            
-        }
-
-        return `
+    return `
         <!DOCTYPE html>
         <html lang="de">
             <head>
@@ -96,5 +118,5 @@ module.exports = {
                 
             </body>
         </html>`;
-    },
-}
+  },
+};
